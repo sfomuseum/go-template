@@ -9,8 +9,13 @@ import (
 	"text/template"
 )
 
-// LoadTemplates loads text (.txt) from 't_fs' with default functions assigned.
+// LoadTemplates loads text templates matching ".txt" from 't_fs' with default functions assigned.
 func LoadTemplates(ctx context.Context, t_fs ...fs.FS) (*template.Template, error) {
+	return LoadTemplatesMatching(ctx, "*.txt", t_fs...)
+}
+
+// LoadTemplatesMatching loads text templates matching 'pattern' from 't_fs' with default functions assigned.
+func LoadTemplatesMatching(ctx context.Context, pattern string, t_fs ...fs.FS) (*template.Template, error) {
 
 	funcs := TemplatesFuncMap()
 	t := template.New("text").Funcs(funcs)
@@ -19,7 +24,7 @@ func LoadTemplates(ctx context.Context, t_fs ...fs.FS) (*template.Template, erro
 
 	for idx, f := range t_fs {
 
-		t, err = t.ParseFS(f, "*.txt")
+		t, err = t.ParseFS(f, pattern)
 
 		if err != nil {
 			return nil, fmt.Errorf("Failed to load templates from FS at offset %d, %w", idx, err)
