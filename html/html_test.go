@@ -55,3 +55,24 @@ func TestLoadTemplates(t *testing.T) {
 		t.Fatalf("Unexpected output '%s'", output)
 	}
 }
+
+func TestLoadTemplatesExcluding(t *testing.T) {
+
+	ctx := context.Background()
+
+	excluding := []string{
+		"test",
+	}
+
+	tpl, err := LoadTemplatesExcluding(ctx, excluding, FS)
+
+	if err != nil {
+		t.Fatalf("Failed to load templates, %v", err)
+	}
+
+	test_t := tpl.Lookup("test")
+
+	if test_t != nil {
+		t.Fatalf("Expected not to find 'test' template")
+	}
+}
