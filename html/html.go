@@ -97,9 +97,10 @@ func TemplatesFuncMap() template.FuncMap {
 
 	return template.FuncMap{
 		// For example: {{ if (IsAvailable "Account" .) }}
-		"IsAvailable": funcs.IsAvailable,
-		"Add":         funcs.Add,
-		"JoinPath":    funcs.JoinPath,
-		"QRCode": funcs.QRCode,
+		"IsAvailable":   funcs.IsAvailable,
+		"Add":           funcs.Add,
+		"JoinPath":      funcs.JoinPath,
+		"QRCodeB64":     funcs.QRCodeB64,
+		"QRCodeDataURI": funcs.QRCodeDataURI,
 	}
 }
