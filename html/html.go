@@ -100,5 +100,6 @@ func TemplatesFuncMap() template.FuncMap {
 		"IsAvailable": funcs.IsAvailable,
 		"Add":         funcs.Add,
 		"JoinPath":    funcs.JoinPath,
+		"QRCode": funcs.QRCode,
 	}
 }
