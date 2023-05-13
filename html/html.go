@@ -102,5 +102,7 @@ func TemplatesFuncMap() template.FuncMap {
 		"JoinPath":      funcs.JoinPath,
 		"QRCodeB64":     funcs.QRCodeB64,
 		"QRCodeDataURI": funcs.QRCodeDataURI,
+		"IsEven":        funcs.IsEven,
+		"IsOdd":         funcs.IsOdd,
 	}
 }
