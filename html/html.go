@@ -44,7 +44,7 @@ func LoadTemplatesExcluding(ctx context.Context, excluding []string, t_fs ...fs.
 			if err != nil {
 				return fmt.Errorf("Encountered an error walking %s, %w", path, err)
 			}
-
+			
 			r, err := f.Open(path)
 
 			if err != nil {
@@ -97,12 +97,13 @@ func TemplatesFuncMap() template.FuncMap {
 
 	return template.FuncMap{
 		// For example: {{ if (IsAvailable "Account" .) }}
-		"IsAvailable":   funcs.IsAvailable,
-		"Add":           funcs.Add,
-		"JoinPath":      funcs.JoinPath,
-		"QRCodeB64":     funcs.QRCodeB64,
-		"QRCodeDataURI": funcs.QRCodeDataURI,
-		"IsEven":        funcs.IsEven,
-		"IsOdd":         funcs.IsOdd,
+		"IsAvailable":      funcs.IsAvailable,
+		"Add":              funcs.Add,
+		"JoinPath":         funcs.JoinPath,
+		"QRCodeB64":        funcs.QRCodeB64,
+		"QRCodeDataURI":    funcs.QRCodeDataURI,
+		"IsEven":           funcs.IsEven,
+		"IsOdd":            funcs.IsOdd,
+		"FormatStringTime": funcs.FormatStringTime,
 	}
 }
